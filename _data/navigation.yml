@@ -1,16 +1,17 @@
-- title: Home
-  url: /
-- title: Présentation
-  subitems:
-  - title: About
-    url: /about
-  - title: News
-    url: /news
-- title: Thérapeutes
-  subitems:
-  - title: Sarah Dionne
-    url: /sarah
-  - title: Alexandre Kaspar
-    url: /alex
-  - title: Séverine Corthay
-    url: /severine
+nav:
+  - title: Home
+    url: /
+  - title: Présentation
+    subnav:
+      - title: About
+        url: /about
+      - title: News
+        url: /news
+  - title: Thérapeutes
+    subnav:
+      - title: Sarah Dionne
+        url: /sarah
+      - title: Alexandre Kaspar
+        url: /alex
+      - title: Séverine Corthay
+        url: /severine

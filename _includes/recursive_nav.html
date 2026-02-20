@@ -1,0 +1,35 @@
+<ul>
+  {% for item in page.nav %}
+    <li><a href="{{ item.url }}">{{ item.title }}</a>
+      {% if item.subnav %}
+        {% include nav.html nav=item.subnav %}
+      {% endif %}
+    </li>
+  {% endfor %}
+</ul>
+
+
+
+
+<!--
+  <ul>
+    {% for item in site.data.navigation %}
+      {% assign has_subitems = item.subitems[0] %}
+      <li
+        class="{% if item.subitems[0] %}submenu{% endif %}"
+      >
+        <a
+          href="{{ item.url }}"
+          class="{% if page.url == item.url %}{% endif %}"
+        >{{ item.title }}</a>
+        {% if item.subitems[0] %}
+        <ul>
+          {% for subitem in item.subitems %}
+            <li><a href="{{ subitem.url }}">{{ subitem.title }}</a></li>
+          {% endfor %}
+        </ul>
+        {% endif %}
+      </li>
+    {% endfor %}
+  </ul>
+-->
