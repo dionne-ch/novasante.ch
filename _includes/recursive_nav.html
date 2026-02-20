@@ -12,7 +12,7 @@
         {% assign classnames = classnames | concat: "current" %}
     {% endif %}
 
-    <li class="{{ classnames | split:", " | join: " " }} ">
+    <li class="{{ classnames | split: ', ' | join: ' ' }} ">
         {% assign tag_name = item.url? 'a': 'span' %}
         <{{ tag_name }} href="{{ item.url }}">{{ item.title }}</{{ tag_name }}>
         {% if item.subnav %}
