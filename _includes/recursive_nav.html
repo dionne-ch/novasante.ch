@@ -1,6 +1,7 @@
 <ul>
   {% for item in include.nav %}
 
+    {% assign classnames = "" %}
     {% if item.subnav %}
         {% assign classnames = "submenu" %}
     {% endif %}
