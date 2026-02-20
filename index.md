@@ -1,6 +1,6 @@
 ---
 layout: default
-title: About
+title: NOVA Santé Intégrée
 ---
 # novasante.ch
 
