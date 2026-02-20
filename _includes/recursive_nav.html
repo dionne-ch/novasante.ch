@@ -1,20 +1,21 @@
 <ul>
   {% for item in include.nav %}
-
     {% assign classnames = "" %}
     {% if item.subnav %}
         {% assign classnames = "submenu" %}
     {% endif %}
     {% if page.url == item.url %}
-        {% if classnames != "" %}
-            {% assign classnames = classnames | concat: ", " %}
+        {% if classnames %}
+            {% assign classnames = classnames | append: ", " %}
         {% endif %}
-        {% assign classnames = classnames | concat: "current" %}
+        {% assign classnames = classnames | append: "current" %}
     {% endif %}
-
-    <li class="{{ classnames | split: ', ' | join: ' ' }} ">
-        {% assign tag_name = item.url? 'a': 'span' %}
-        <{{ tag_name }} href="{{ item.url }}">{{ item.title }}</{{ tag_name }}>
+    <li{% if classnames %} class="{{ classnames | split: ', ' | join: ' ' }}"{% endif %}>
+        {% assign tag_name = 'span' %}
+        {% if item.url %}
+            {% assign tag_name = 'a' %}
+        {% endif %}
+        <{{ tag_name }}{% if item.url %} href="{{ item.url }}"{% endif %}>{{ item.title }}</{{ tag_name }}>
         {% if item.subnav %}
             {% include recursive_nav.html nav=item.subnav %}
         {% endif %}
