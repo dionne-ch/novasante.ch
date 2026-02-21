@@ -364,7 +364,10 @@ const locationHandler = () => {
   //console.log(location);
   // get the route object from the routes object
   if (location === "form") {
-    document.getElementById("banner").style.display = "none";
+    if(document.getElementById("banner")) {
+      document.getElementById("banner").style.display = "none";
+    }
+    
     const sections = document.querySelectorAll(".sections section");
 
     sections.forEach((section) => {
@@ -376,9 +379,13 @@ const locationHandler = () => {
     });
   } else {
     if (location === "form_sent") {
-      document.getElementById("form_sent").showModal();
+      if (document.getElementById("form_sent")) {
+        document.getElementById("form_sent").showModal();
+      }
     }
-    document.getElementById("banner").style.display = "block";
+    if(document.getElementById("banner")) {
+      document.getElementById("banner").style.display = "block";
+    }
     const sections = document.querySelectorAll(".sections section");
     //console.log(sections);
     sections.forEach((section) => {
@@ -415,3 +422,145 @@ const init = () => {
 };
 
 document.addEventListener("DOMContentLoaded", init);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+function enhanceSarahInnerSection(innerHtml) {
+  const doc = new DOMParser().parseFromString(`<div id="root">${innerHtml}</div>`, "text/html");
+  const root = doc.getElementById("root");
+
+  // Title
+  const h2 = root.querySelector("h2");
+  const title = (h2?.textContent || "Sarah Dionne").trim();
+
+  // Collect nodes in original order, but:
+  // - unwrap <p><img/></p> into <img/>
+  // - normalize straight quotes in French apostrophes only (’ -> ') to match target
+  const collected = [];
+  for (const node of Array.from(root.childNodes)) {
+    if (node.nodeType !== Node.ELEMENT_NODE) continue;
+
+    const el = /** @type {HTMLElement} */ (node);
+
+    if (el.tagName === "H2") continue;
+
+    if (el.tagName === "P") {
+      const onlyImg = el.children.length === 1 && el.firstElementChild?.tagName === "IMG";
+      if (onlyImg) {
+        collected.push(el.firstElementChild.cloneNode(true));
+      } else {
+        // Clone paragraph and normalize apostrophes to match target (’ -> ')
+        const p = el.cloneNode(true);
+        p.innerHTML = p.innerHTML.replace(/’/g, "'");
+        collected.push(p);
+      }
+      continue;
+    }
+
+    if (el.tagName === "IMG") {
+      collected.push(el.cloneNode(true));
+    }
+  }
+
+  // Expecting 2 images in this content: first and second
+  const imgs = collected.filter((n) => n.nodeType === Node.ELEMENT_NODE && n.tagName === "IMG");
+  const paras = collected.filter((n) => n.nodeType === Node.ELEMENT_NODE && n.tagName === "P");
+
+  const img1 = /** @type {HTMLImageElement | undefined} */ (imgs[0]);
+  const img2 = /** @type {HTMLImageElement | undefined} */ (imgs[1]);
+
+  // Helper to "enhance" an image to match the target attributes/classes
+  function enhanceImg(img, { right = false, width, height } = {}) {
+    if (!img) return null;
+
+    const src = img.getAttribute("src") || "";
+    const enhanced = img.cloneNode(true);
+
+    // Set classes
+    enhanced.className = ""; // reset
+    enhanced.classList.add("observable");
+    if (right) enhanced.classList.add("right");
+
+    // Convert src to low-res placeholder if it matches the expected pattern
+    // (keeps original if it doesn't match)
+    const lowSrc = src.replace(/tr:w-\d+,/i, "tr:w-30,");
+    //enhanced.setAttribute("src", lowSrc);
+
+    // Set lazy srcset to the original "hi-res" src
+    enhanced.setAttribute("data-srcset", src);
+
+    // Set sizing (as in target)
+    if (width) enhanced.setAttribute("width", String(width));
+    if (height) enhanced.setAttribute("height", String(height));
+
+    return enhanced;
+  }
+
+  const out = doc.implementation.createHTMLDocument("");
+  const fragRoot = out.createElement("div");
+
+  // <h2 class="text-center uppercase">...</h2>
+  const outH2 = out.createElement("h2");
+  outH2.className = "text-center uppercase";
+  outH2.textContent = title;
+  fragRoot.appendChild(outH2);
+
+  // <div class="row"><div class="col col--text-around-img">...</div></div>
+  const row = out.createElement("div");
+  row.className = "row";
+  const col = out.createElement("div");
+  col.className = "col col--text-around-img";
+
+  // Build exact order to match target:
+  // img1, p1, p2, p3, img2(right), p4, p5
+  const outImg1 = enhanceImg(img1, { right: false, width: 264, height: 363 });
+  if (outImg1) col.appendChild(outImg1);
+
+  for (let i = 0; i < paras.length; i++) {
+    if (i === 3) {
+      const outImg2 = enhanceImg(img2, { right: true, width: 264, height: 264 });
+      if (outImg2) col.appendChild(outImg2);
+    }
+    // Clone paragraph into the output doc
+    const p = out.createElement("p");
+    p.innerHTML = paras[i].innerHTML; // already normalized ’ -> '
+    col.appendChild(p);
+  }
+
+  row.appendChild(col);
+  fragRoot.appendChild(row);
+
+  return fragRoot.innerHTML.trim();
+}
+
+
+
+function runEnhancement() {
+  const section = document.querySelector("#about");
+  if (!section) return;
+
+  section.innerHTML = enhanceSarahInnerSection(section.innerHTML);
+}
+
+if (document.readyState === "loading") {
+  document.addEventListener("DOMContentLoaded", runEnhancement);
+} else {
+  runEnhancement();
+}
