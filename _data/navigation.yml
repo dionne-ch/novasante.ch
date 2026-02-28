@@ -10,11 +10,13 @@ nav:
   - title: Thérapeutes
     subnav:
       - title: Sarah Dionne
-        url: /sarah
-      - title: Alexandre Kaspar
-        url: /alex
+        url: /sarah-dionne
       - title: Séverine Corthay
-        url: /severine
+        url: /severine-corthay
+      - title: Alexandre Kaspar
+        url: /alexandre-kaspar
+      - title: Laura Carnello
+        url: /laura-carnello
   - title: Contact
     url: /contact
     class: primary
