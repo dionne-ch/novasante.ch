@@ -559,8 +559,10 @@ function runEnhancement() {
   section.innerHTML = enhanceSarahInnerSection(section.innerHTML);
 }
 
+/*
 if (document.readyState === "loading") {
   document.addEventListener("DOMContentLoaded", runEnhancement);
 } else {
   runEnhancement();
 }
+*/
