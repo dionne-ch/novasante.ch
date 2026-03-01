@@ -13,7 +13,7 @@ $containers: (
   "xs": auto,
   "s": auto,
   "m": auto,
-  "l": calc(960px - 96px),
+  "l": 864px, // calc(960px - 96px),
   "xl": 1024px,
   "xxl": 1200px
 );
@@ -56,7 +56,7 @@ $slide-images: (
     $slide-width: nth(map_values($breakpoints), $i + 1);
   }
 
-  @include grid_media_query($name) {
+  @include grid-media-query($name) {
     :root {
       $img-path: "//ik.imagekit.io/sncl/tr:w-#{$slide-width},h-600,c-at_least,f-webp/header/";
       @for $i from 1 through length($slide-images) {
@@ -470,7 +470,7 @@ body {
       height: auto;
       display: flex;
       justify-content: center;
-      @include grid_media_query(m) {
+      @include grid-media-query(m) {
         flex-basis: 25%;
       }
       > a {
