@@ -1,4 +1,4 @@
-const cacheName = "NOVA-v0.1.00",
+const cacheName = "NOVA-v0.1.01",
       assets = [
         '/',
         '/index.html',
@@ -9,7 +9,7 @@ const cacheName = "NOVA-v0.1.00",
         '/assets/icons/favicon.svg',
         '/assets/icons/android-chrome-144x144.png',
         // CDN images
-        'https://ik.imagekit.io/sarahdionne/tr:w-30,fo-auto,f-webp/hero/full.jpg',
+        // 'https://ik.imagekit.io/sarahdionne/tr:w-30,fo-auto,f-webp/hero/full.jpg',
         // Externals
         'https://cdn.polyfill.io/v3/polyfill.min.js',
         'https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400;700;900&amp;display=swap'

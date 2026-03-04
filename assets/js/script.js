@@ -405,7 +405,7 @@ const initRouting = () => {
   locationHandler();
 };
 
-const InitSections = () => {
+const initSections = () => {
     const container = document.getElementsByClassName('sections')[0];
     if (!container) {
         console.warn("Container with class 'sections' not found. Cannot organize content into sections.");
