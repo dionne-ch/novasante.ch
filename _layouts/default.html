@@ -127,7 +127,7 @@
 <script src="//cdn.polyfill.io/v3/polyfill.min.js"></script>
 <script>
   if('serviceWorker' in navigator) {
-    navigator.serviceWorker.register('sw.js');
+    navigator.serviceWorker.register('{{ "/sw.js" | relative_url }}');
   };
 </script>
 <script src="{{ '/assets/js/script.js' | relative_url }}"></script>
