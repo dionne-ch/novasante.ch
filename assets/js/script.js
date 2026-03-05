@@ -405,91 +405,92 @@ const initRouting = () => {
   locationHandler();
 };
 
-const initSections = () => {
-  const container = document.getElementsByClassName("sections")[0];
-  if (!container) {
-    console.warn(
-      "Container with class 'sections' not found. Cannot organize content into sections."
-    );
-    return;
-  }
+const initSections = ({
+  containerSelector = ".sections",
+  sectionClass = "containered",
+  delimiterSelector = "hr.section-break",
+  headingSelectorFallback = "H2", // fallback mode if no delimiters exist
+  rowClass = "row",
+  colClass = "col", // change to "col-12" if you're using Bootstrap conventions
+} = {}) => {
+  const container = document.querySelector(containerSelector);
+  if (!container) return;
 
-  // Create a DocumentFragment to build the new structure efficiently
+  // Prevent running twice
+  if (container.dataset.sectionsBuilt === "true") return;
+  container.dataset.sectionsBuilt = "true";
+
+  const children = Array.from(container.children);
+  if (children.length === 0) return;
+
+  const hasDelimiters = children.some((el) => el.matches(delimiterSelector));
+
   const fragment = document.createDocumentFragment();
-  let currentSectionDiv = null;
-  // This array will temporarily hold the children for the section currently being built.
-  // This allows us to process them (e.g., remove first/last HR) before appending to the DOM.
-  let sectionChildren = [];
 
-  // Get a static list of the container's children to iterate over.
-  // This is important because we will be moving/removing children,
-  // which would otherwise affect a live NodeList.
-  const childrenToProcess = Array.from(container.children);
+  let section = null;
+  let row = null;
+  let col = null;
 
-  /**
-   * Helper function to process the collected children for the current section.
-   * It checks for and removes HR elements if they are the first or last child
-   * within the section, then appends the remaining children to the section
-   * and adds the section to the fragment.
-   */
-  const processCurrentSection = () => {
-    if (currentSectionDiv && sectionChildren.length > 0) {
-      // Check and remove HR if it's the first child of the section
-      if (sectionChildren.length > 0 && sectionChildren[0].tagName === "HR") {
-        sectionChildren.shift(); // Remove the first element
-      }
-      // Check and remove HR if it's the last child of the section
-      if (
-        sectionChildren.length > 0 &&
-        sectionChildren[sectionChildren.length - 1].tagName === "HR"
-      ) {
-        sectionChildren.pop(); // Remove the last element
-      }
+  const startSection = () => {
+    section = document.createElement("section");
+    section.classList.add(sectionClass);
 
-      // Append the remaining children to the currentSectionDiv
-      sectionChildren.forEach((child) => {
-        currentSectionDiv.appendChild(child);
-      });
-      fragment.appendChild(currentSectionDiv);
+    row = document.createElement("div");
+    row.classList.add(rowClass);
+
+    col = document.createElement("div");
+    col.classList.add(colClass);
+
+    row.appendChild(col);
+    section.appendChild(row);
+    fragment.appendChild(section);
+  };
+
+  const trimLeadingTrailingHR = (parentEl) => {
+    while (parentEl.firstElementChild?.tagName === "HR") {
+      parentEl.removeChild(parentEl.firstElementChild);
+    }
+    while (parentEl.lastElementChild?.tagName === "HR") {
+      parentEl.removeChild(parentEl.lastElementChild);
     }
   };
 
-  childrenToProcess.forEach((child) => {
-    if (child.tagName === "H1") {
-      // If an H1 is encountered, it marks the start of a new logical section.
-      // First, process the previous section if one was being built
-      processCurrentSection();
+  const finalizeSection = () => {
+    if (!section || !col) return;
 
-      // Start a new section
-      currentSectionDiv = document.createElement("section");
-      currentSectionDiv.classList.add("containered"); // Add a class for styling these new sections
+    // If the col starts/ends with <hr>, remove them
+    trimLeadingTrailingHR(col);
 
-      // Check if the H1 has an ID and move it to the section
-      if (child.id) {
-        currentSectionDiv.id = child.id; // Assign the H1's ID to the section
-        child.removeAttribute("id"); // Remove the ID from the H1
-      }
-
-      sectionChildren = []; // Reset children array for the new section
-      sectionChildren.push(child); // Add the H1 as the first child of the new section
-    } else {
-      // If it's not an H1
-      if (!currentSectionDiv) {
-        // If no H1 has been encountered yet, create the first section implicitly.
-        currentSectionDiv = document.createElement("section");
-        currentSectionDiv.classList.add("containered");
-        sectionChildren = []; // Ensure it's empty for the new section
-      }
-      // Add the current child element to the current section's temporary list.
-      sectionChildren.push(child);
+    // Remove empty sections
+    if (!col.children.length) {
+      fragment.removeChild(section);
     }
-  });
 
-  // After the loop, process the very last section that was being built
-  processCurrentSection();
+    section = row = col = null;
+  };
 
-  // After processing all children, clear the original container's content
-  // and then append the new, structured content from the fragment.
+  startSection();
+
+  for (const el of children) {
+    // Explicit delimiter mode
+    if (hasDelimiters && el.matches(delimiterSelector)) {
+      finalizeSection();
+      startSection();
+      continue; // drop the delimiter
+    }
+
+    // Fallback mode: split on headings (recommended: H2)
+    if (!hasDelimiters && el.tagName === headingSelectorFallback) {
+      finalizeSection();
+      startSection();
+    }
+
+    col.appendChild(el);
+  }
+
+  finalizeSection();
+
+  // Replace contents
   container.innerHTML = "";
   container.appendChild(fragment);
 };
@@ -505,10 +506,10 @@ const init = () => {
   initNavPosition();
   initCloseSubNav();
   initParallax();
+  initSections();
   initForm();
   initRouting();
   initMaps();
-  initSections();
 };
 
 document.addEventListener("DOMContentLoaded", init);
