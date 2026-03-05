@@ -41,6 +41,7 @@ const throttle = (func, wait, options) => {
   };
   return throttled;
 };
+
 const convertDate = (event) => {
   // Prevent the form from submitting
   event.preventDefault();
@@ -63,6 +64,7 @@ const convertDate = (event) => {
   // Submit the form
   event.target.submit();
 };
+
 const trackEvent = (event, ...options) => {
   // console.log(`Track event: ${event}`, ...options);
   if (typeof mixpanel === "object") {
@@ -250,6 +252,7 @@ const initMaps = () => {
     );
   });
 };
+
 const initParallax = () => {
   document.addEventListener(
     "scroll",
@@ -300,6 +303,7 @@ const initTogglerListener = () => {
     togglerClickedHandler(toggler.checked)
   );
 };
+
 const trackFirstScroll = () => {
   trackEvent("First scroll");
   document.removeEventListener("scroll", trackFirstScroll);
@@ -327,6 +331,7 @@ const initLinksClicked = () => {
       )
     );
 };
+
 const initForm = () => {
   document
     .querySelectorAll(
@@ -364,10 +369,10 @@ const locationHandler = () => {
   //console.log(location);
   // get the route object from the routes object
   if (location === "form") {
-    if(document.getElementById("banner")) {
-    document.getElementById("banner").style.display = "none";
+    if (document.getElementById("banner")) {
+      document.getElementById("banner").style.display = "none";
     }
-    
+
     const sections = document.querySelectorAll(".sections section");
 
     sections.forEach((section) => {
@@ -380,11 +385,11 @@ const locationHandler = () => {
   } else {
     if (location === "form_sent") {
       if (document.getElementById("form_sent")) {
-      document.getElementById("form_sent").showModal();
+        document.getElementById("form_sent").showModal();
+      }
     }
-    }
-    if(document.getElementById("banner")) {
-    document.getElementById("banner").style.display = "block";
+    if (document.getElementById("banner")) {
+      document.getElementById("banner").style.display = "block";
     }
     const sections = document.querySelectorAll(".sections section");
     //console.log(sections);
@@ -398,6 +403,7 @@ const locationHandler = () => {
     });
   }
 };
+
 const initRouting = () => {
   // create a function that watches the hash and calls the urlLocationHandler
   window.addEventListener("hashchange", locationHandler);
@@ -405,13 +411,21 @@ const initRouting = () => {
   locationHandler();
 };
 
+/**
+ * initSections
+ * - Splits `.sections` children into <section> blocks.
+ * - Uses `hr.section-break` as delimiter when present, otherwise splits on H2.
+ * - Wraps each section with .row > .col (for your grid system).
+ * - If a section starts with an H2 with an id, copies that id to the <section>
+ *   AND removes the id from the H2 to avoid duplicate anchors.
+ */
 const initSections = ({
   containerSelector = ".sections",
   sectionClass = "containered",
   delimiterSelector = "hr.section-break",
-  headingSelectorFallback = "H2", // fallback mode if no delimiters exist
+  headingSelectorFallback = "H2",
   rowClass = "row",
-  colClass = "col", // change to "col-12" if you're using Bootstrap conventions
+  colClass = "col",
 } = {}) => {
   const container = document.querySelector(containerSelector);
   if (!container) return;
@@ -424,14 +438,13 @@ const initSections = ({
   if (children.length === 0) return;
 
   const hasDelimiters = children.some((el) => el.matches(delimiterSelector));
-
   const fragment = document.createDocumentFragment();
 
   let section = null;
   let row = null;
   let col = null;
 
-  const startSection = () => {
+  const startSection = (headingEl = null) => {
     section = document.createElement("section");
     section.classList.add(sectionClass);
 
@@ -444,6 +457,13 @@ const initSections = ({
     row.appendChild(col);
     section.appendChild(row);
     fragment.appendChild(section);
+
+    // If the section begins with an H2 that has an id, move it to the section.
+    // This makes routing/anchors work after DOM restructuring.
+    if (headingEl && headingEl.id) {
+      section.id = headingEl.id;
+      headingEl.removeAttribute("id"); // avoid duplicate anchor ids
+    }
   };
 
   const trimLeadingTrailingHR = (parentEl) => {
@@ -458,7 +478,6 @@ const initSections = ({
   const finalizeSection = () => {
     if (!section || !col) return;
 
-    // If the col starts/ends with <hr>, remove them
     trimLeadingTrailingHR(col);
 
     // Remove empty sections
@@ -469,6 +488,7 @@ const initSections = ({
     section = row = col = null;
   };
 
+  // Start first section (no heading yet)
   startSection();
 
   for (const el of children) {
@@ -476,13 +496,13 @@ const initSections = ({
     if (hasDelimiters && el.matches(delimiterSelector)) {
       finalizeSection();
       startSection();
-      continue; // drop the delimiter
+      continue; // drop delimiter
     }
 
-    // Fallback mode: split on headings (recommended: H2)
+    // Fallback mode: split on H2
     if (!hasDelimiters && el.tagName === headingSelectorFallback) {
       finalizeSection();
-      startSection();
+      startSection(el); // pass heading so its id can be moved to the section
     }
 
     col.appendChild(el);
