@@ -1,0 +1,16 @@
+## Les thérapeutes actuellement au centre
+
+{% assign practitioners = site.practitioner | sort: "order" %}
+
+<div class="row">
+{% for p in practitioners %}
+    <div class="col m--u-1/2">
+        <h3>{{ p.title }}</h3>
+        <p><strong>{{ p.function }}</strong></p>
+        <p>📧 <a href="mailto:{{ p.email }}">{{ p.email }}</a><br>
+        📞 {{ p.phone }}
+        {% if p.instagram %}<br>Instagram : <a href="https://www.instagram.com/{{ p.instagram }}">@{{ p.instagram }}</a>{% endif %}
+        </p>
+    </div>
+{% endfor %}
+</div>

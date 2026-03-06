@@ -27,39 +27,7 @@ Nous croyons que lorsque les compétences se complètent et que le dialogue s’
 
 ---
 
-## Les thérapeutes actuellement au centre
-
-
-### Sarah Dionne  
-**Fondatrice du centre - Coordination des soins - Thérapie et accompagnement**
-
-📧 <sarah.dionne@novasante.ch>  
-📞 +41 76 839 30 08  
-
----
-
-### Séverine Corthay  
-**Dramathérapeute e.f.**  
-
-📧 <severine.corthay@novasante.ch>  
-📞 +41 78 302 31 56  
-
----
-
-### Alexandre Kaspar  
-**Physiothérapeute – Spécialisation pédiatrique**  
-
-📧 <alexandre.kaspar@novasante.ch>  
-📞 +41 78 677 77 14  
-
----
-
-### Laura Carnello  
-**Acupuncture & Tuina**  
-
-📧 <laura.carnello@novasante.ch>  
-📞 +41 78 638 80 59  
-Instagram : [@ora_acupuncture](https://www.instagram.com/ora_acupuncture)
+{% include practitioners.html %}
 
 ---
 

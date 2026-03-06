@@ -1,9 +1,13 @@
 ---
+order: 1
 title: Sarah Dionne
-permalink: /sarah-dionne/
+function: Fondatrice du centre - Coordination des soins - Thérapie et accompagnement
+email: sarah.dionne@novasante.ch
+phone: +41 76 839 30 08
+image: //ik.imagekit.io/sarahdionne/tr:w-576,fo-auto,f-webp/profile/sarah_dionne_profile.jpg
 ---
 
-# Sarah Dionne
+## {{ page.title }}
 
 ![Sarah Dionne](//ik.imagekit.io/sarahdionne/tr:w-576,fo-auto,f-webp/profile/sarah_dionne_profile_bis.jpg)
 
