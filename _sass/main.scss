@@ -225,21 +225,21 @@ $slide-images: ("mountain-sunrise.jpg");
     left: auto;
     right: auto;
     width: 100%;
-    
+
     img {
       width: 100%;
       max-width: calc(100vw - var(--gutter));
-        height: auto;
-        border-radius: 10px;
+      height: auto;
+      border-radius: 10px;
 
-        @include grid-media-query(xs) {
-          max-width: calc((100vw / 2) - var(--gutter));
+      @include grid-media-query(xs) {
+        max-width: calc((100vw / 2) - var(--gutter));
+      }
+      @include grid-media-query(s) {
+        &:not(.large) {
+          max-width: calc((100vw / 3) - var(--gutter));
         }
-        @include grid-media-query(s) {
-          &:not(.large) {
-            max-width: calc((100vw / 3) - var(--gutter));
-          }
-        }
+      }
     }
 
     &.col {
@@ -251,7 +251,9 @@ $slide-images: ("mountain-sunrise.jpg");
         }
       }
       img {
-        filter: blur(5px);
+        &.observable {
+          filter: blur(5px);
+        }
         &.visible {
           filter: none;
           transition: transform 0.2s;
