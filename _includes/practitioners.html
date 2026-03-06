@@ -1,8 +1,6 @@
 ## Les thérapeutes actuellement au centre
 
-{% assign ordered = site.practitioners | where_exp: "p", "p.order" | sort: "order" %}
-{% assign unordered = site.practitioners | where: "order", nil | sort: "title" %}
-{% assign practitioners = ordered | concat: unordered %}
+{% assign practitioners = site.practitioners | sort: "order", "title" %}
 
 <div class="row">
 {% for p in practitioners %}
