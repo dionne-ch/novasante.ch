@@ -3,10 +3,10 @@ layout: default
 ---
 
 <h2>{{ page.title }}</h2>
-<p><strong>{{ p.function }}</strong></p>
-<p>📧 <a href="mailto:{{ p.email }}">{{ p.email }}</a><br>
-📞 {{ p.phone }}
-{% if p.instagram %}<br>Instagram : <a href="https://www.instagram.com/{{ p.instagram }}">@{{ p.instagram }}</a>{% endif %}
+<p><strong>{{ page.function }}</strong></p>
+<p>📧 <a href="mailto:{{ p.email }}">{{ page.email }}</a><br>
+📞 {{ page.phone }}
+{% if page.instagram %}<br>Instagram : <a href="https://www.instagram.com/{{ p.instagram }}">@{{ page.instagram }}</a>{% endif %}
 </p>
 
 <hr/>
