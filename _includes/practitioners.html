@@ -2,8 +2,10 @@
 
 {% assign practitioners = site.practitioners | sort: "order", "last" %}
 
-<div class="row">
+
 {% for p in practitioners %}
+  {% assign index_mod = forloop.index0 | modulo 2 %}
+  {% if index_mod == 0 %}<div class="row">{% endif %}
     <div class="col m--u-1/2">
         <h3>{{ p.title }}</h3>
         <p><strong>{{ p.function }}</strong></p>
@@ -12,5 +14,5 @@
         {% if p.instagram %}<br>Instagram : <a href="https://www.instagram.com/{{ p.instagram }}">@{{ p.instagram }}</a>{% endif %}
         </p>
     </div>
+  {% if index_mod != 0 or forloop.last %}</div>{% endif %}
 {% endfor %}
-</div>
