@@ -7,8 +7,6 @@ phone: +41 76 839 30 08
 image: //ik.imagekit.io/sarahdionne/tr:w-576,fo-auto,f-webp/profile/sarah_dionne_profile.jpg
 ---
 
-## {{ page.title }}
-
 ![Sarah Dionne](//ik.imagekit.io/sarahdionne/tr:w-576,fo-auto,f-webp/profile/sarah_dionne_profile_bis.jpg)
 
 De nationalité Canadienne et Suisse, j'ai reçu mon diplôme de l'Université Laval au Québec (Canada), en 2010. J'ai travaillé principalement en Suisse, au CHUV, depuis l'obtention de mon diplôme. D'abord une année en neuro-réhabilitation adulte, puis cinq ans aux soins intensifs de pédiatrie/néonatalogie et finalement six ans comme physiothérapeute cadre au sein du Département femme-mère-enfant.

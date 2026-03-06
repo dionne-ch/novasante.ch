@@ -1,0 +1,14 @@
+---
+layout: default
+---
+
+<h2>{{ page.title }}</h2>
+<p><strong>{{ p.function }}</strong></p>
+<p>📧 <a href="mailto:{{ p.email }}">{{ p.email }}</a><br>
+📞 {{ p.phone }}
+{% if p.instagram %}<br>Instagram : <a href="https://www.instagram.com/{{ p.instagram }}">@{{ p.instagram }}</a>{% endif %}
+</p>
+
+<hr/>
+
+{{ content }}
