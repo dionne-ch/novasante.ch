@@ -251,8 +251,7 @@ $slide-images: ("mountain-sunrise.jpg");
         float: left;
         &.right {
           float: right;
-          margin: calc(var(--gutter) / 2) calc(var(--gutter) / 2)
-            calc(var(--gutter) / 2) var(--gutter);
+          margin: 0 0 calc(var(--gutter) / 2) var(--gutter);
         }
       }
 
@@ -1311,7 +1310,7 @@ body {
         padding-left: 0px;
         font-weight: 900;
         height: 56px;
-        // vertical-align: middle;
+        vertical-align: middle;
         overflow: hidden;
         text-overflow: ellipsis;
         white-space: nowrap;
