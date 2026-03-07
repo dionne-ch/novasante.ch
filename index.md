@@ -1,7 +1,7 @@
 ---
 title: NOVA Santé Intégrée
 ---
-{% assign sarah = site.practitioner | where:"email", site.contact.email %}
+{% assign sarah = site.practitioners | where:"email", site.contact.email %}
 
 ## Présentation
 
