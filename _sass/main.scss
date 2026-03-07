@@ -158,8 +158,8 @@ $slide-images: ("mountain-sunrise.jpg");
   --primary-btn-bg: var(--green);
   --nav-bg: transparent;
 
-  --font-size: 16px;
-  --font-size-mobile: calc(var(--font-size) * 0.95);
+  --font-size: 18px;
+  --font-size-mobile: calc(var(--font-size) * 0.9);
   --header-border-width: 2px;
   --h1-font-size: 2.5em;
 
@@ -1319,7 +1319,7 @@ body {
         padding-left: 0px;
         font-weight: 900;
         height: 56px;
-        vertical-align: middle;
+        //vertical-align: middle;
         overflow: hidden;
         text-overflow: ellipsis;
         white-space: nowrap;
