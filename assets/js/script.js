@@ -422,7 +422,7 @@ const initRouting = () => {
  */
 const initSections = ({
   containerSelector = ".sections",
-  sectionClass = "uncontainered",
+  sectionClass = "containered",
   delimiterSelector = "hr.section-break",
   headingSelectorFallback = "H2",
   rowClass = "row",
