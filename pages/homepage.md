@@ -30,7 +30,7 @@ Notre démarche repose sur l’écoute, la collaboration et la complémentarité
 Chaque personne vit une situation différente.  
 C’est pourquoi nous proposons des accompagnements ajustés, selon les besoins, les étapes de vie et les objectifs de chacun.
 
-![Illustration consultation individuelle](https://placehold.co/600x400?text=Consultation)
+![Illustration consultation individuelle](https://placehold.co/600x400?text=Consultations)
 
 ### Consultations individuelles
 
