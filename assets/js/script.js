@@ -543,17 +543,31 @@ const initSections = ({
   container.appendChild(fragment);
 };
 
-const openPhoneContactModal = (phone) => {
+const openPhoneContactModal = (phone, title) => {
   if (!phone) return;
 
-  const smsLink = document.getElementById("phone-contact-sms");
-  const whatsappLink = document.getElementById("phone-contact-whatsapp");
   const modal = document.getElementById("phone-contact");
+
+  const header = modal.querySelector(".phone-contact-header");
+  const smsLink = modal.querySelector(".phone-contact-sms");
+  const callLink = modal.querySelector(".phone-contact-call");
+  const whatsappLink = modal.querySelector(".phone-contact-whatsapp");
 
   if (!smsLink || !whatsappLink || !modal) return;
 
   const normalizedPhone = phone.replace(/\s+/g, "").replace(/[^\d+]/g, "");
   const whatsappPhone = normalizedPhone.replace("+", "");
+
+  // console.log(header.dataset.initialContent);
+
+  if (title) {
+    header.textContent = title;
+  } else {
+    header.textContent = header.dataset.initialContent;
+  }
+
+  callLink.href = `tel:${normalizedPhone}`;
+  callLink.title = `Appeler au ${phone}`;
 
   smsLink.href = `sms:${normalizedPhone}`;
   smsLink.title = `Envoyer un SMS au ${phone}`;
@@ -574,13 +588,17 @@ const initPhoneContactTriggers = () => {
         event.preventDefault();
 
         let phone = el.dataset.phone;
+        let title = el.dataset.title;
 
         // fallback for tel links
         if (!phone && el.getAttribute("href")) {
           phone = el.getAttribute("href").replace(/^tel:/, "");
         }
+        if (!title && el.getAttribute("title")) {
+          title = el.getAttribute("title");
+        }
 
-        openPhoneContactModal(phone, el);
+        openPhoneContactModal(phone, title);
       });
     });
 };
@@ -692,6 +710,8 @@ const initLightbox = () => {
   document.querySelectorAll("[data-action='zoom']").forEach((img) => {
     const card = img.closest(".card");
     if (!card) return;
+
+    // console.log("img with zoom!");
 
     card.addEventListener("click", (event) => {
       event.preventDefault();

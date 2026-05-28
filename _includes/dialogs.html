@@ -1,0 +1,106 @@
+<dialog id="phone-contact" onclick="this.close()">
+  <form method="dialog" onclick="event.stopPropagation()">
+    <header>
+      <h1>Contact</h1>
+    </header>
+    <section class="content">
+      <p class="phone-contact-header" id="phone-contact-header" data-initial-content="Contacter le centre par téléphone au 077 666 55 44"></p>
+      <p><small>Choississez votre méthode de contact préférée:</small></p>
+      <ul class="buttons_list">
+        <li>
+          <a class="button phone-contact-call" id="phone-contact-call" href="#" title="SMS">
+            <svg class="icon" width="18px" height="18px" aria-hidden="true">
+              <use xlink:href="#call_24dp"></use>
+            </svg>
+            Appel
+          </a>
+        </li>
+        <li>
+          <a class="button phone-contact-sms" id="phone-contact-sms" href="#" title="SMS">
+            <svg class="icon" width="18px" height="18px" aria-hidden="true">
+              <use xlink:href="#forum_24dp"></use>
+            </svg>
+            SMS
+          </a>
+        </li>
+        <li>
+          <a class="button phone-contact-whatsapp" id="phone-contact-whatsapp" href="#" title="WhatsApp">
+            <svg class="icon" width="18px" height="18px" aria-hidden="true">
+              <use xlink:href="#whatsapp_24dp"></use>
+            </svg>
+            WhatsApp
+          </a>
+        </li>
+      </ul>
+    </section>
+    <button class="close-button"><svg class="icon" width="18px" height="18px" aria-hidden="true">
+        <use xlink:href="#close_24dp"></use>
+      </svg></button>
+  </form>
+</dialog>
+<dialog id="cookie-preferences" class="wide text-smaller" onclick="this.close()">
+  <form method="dialog" onclick="event.stopPropagation()">
+    <header>
+      <h1>Préférences de confidentialité</h1>
+    </header>
+    <section class="content">
+      <h2>Notre approche</h2>
+      <p>Nous limitons au strict nécessaire les technologies utilisées afin d'assurer le bon fonctionnement du site et de mieux comprendre son utilisation.</p>
+      <section>
+
+        <span class="switch float-right">
+          <input title="Les éléments nécessaires ne peuvent par être désactivés." checked disabled id="necessary-consent" type="checkbox" />
+          <label></label>
+        </span>
+        <h3>Stockage essentiel</h3>
+        <p>Certains éléments techniques sont nécessaires au bon fonctionnement, à la sécurité et à l'accessibilité du site.</p>
+      </section>
+      <section>
+
+        <span class="switch float-right">
+          <input checked id="analytics-consent" type="checkbox" />
+          <label></label>
+        </span>
+        <h3>Mesure d'audience</h3>
+        <p>Les statistiques de fréquentation nous aident à améliorer le contenu et l'expérience proposée.</p>
+        <p>Les données collectées sont utilisées uniquement à des fins internes et ne servent pas à des fins publicitaires. </p>
+      </section>
+      <section>
+        <h2>En savoir plus</h2>
+        <p>
+          Pour plus d'informations, vous pouvez consulter notre
+          <a href="/politique-de-confidentialite/">
+            politique de confidentialité
+          </a>
+          ou nous contacter via la page
+          <a href="/contact/">
+            contact
+          </a>.
+        </p>
+      </section>
+    </section>
+    <footer>
+      <button data-cookie-action="save">Enregistrer</button>
+      <div class="button-group float-right">
+        <button data-cookie-action="reject">Refuser</button>
+        <button class="primary" autofocus data-cookie-action="accept">Tout accepter</button>
+      </div>
+    </footer>
+    <button class="close-button"><svg class="icon" width="18px" height="18px" aria-hidden="true">
+        <use xlink:href="#close_24dp"></use>
+      </svg></button>
+  </form>
+</dialog>
+<dialog id="booking-modal" class="booking-modal" onclick="this.close()">
+  <form method="dialog" onclick="event.stopPropagation()">
+    <div class="booking-modal__content">
+      <iframe src="" title="Prendre rendez-vous" loading="lazy"></iframe>
+    </div>
+    <button class="close-button"><svg class="icon" width="18px" height="18px" aria-hidden="true">
+        <use xlink:href="#close_24dp"></use>
+      </svg></button>
+  </form>
+</dialog>
+<dialog id="lightbox" class="lightbox" onclick="this.close()">
+  <img src="" alt="" aria-hidden="true">
+</dialog>

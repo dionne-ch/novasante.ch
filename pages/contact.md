@@ -22,8 +22,8 @@ title: Contacter le centre
     </div>
     <div class="card__body">
       <h3 class="card__title">En voiture</h3>
-      <p class="small">4 places visiteurs et zones bleues (6h)</p>
-      <p class="small">À 5 minutes de Lausanne ou de l’autoroute (sortie Lutry–Belmont)</p>
+      <p><small>4 places visiteurs et zones bleues (6h)</small></p>
+      <p><small>À 5 minutes de Lausanne ou de l’autoroute (sortie Lutry–Belmont)</small></p>
     </div>
   </article>
 </div>
@@ -35,9 +35,9 @@ title: Contacter le centre
     </div>
     <div class="card__body">
       <h3 class="card__title">En transports publics</h3>
-      <p class="small">Train CFF jusqu’à <strong>Lutry</strong> ou <strong>Pully Nord</strong></p>
-      <p class="small">À 10 minutes de la place St-François</p>
-      <p class="small">Bus TL ligne 9, arrêt <strong>Paudex Village</strong> (100 m)</p>
+      <p><small>Train CFF jusqu’à <strong>Lutry</strong> ou <strong>Pully Nord</strong></small></p>
+      <p><small>À 10 minutes de la place St-François</small></p>
+      <p><small>Bus TL ligne 9, arrêt <strong>Paudex Village</strong> (100 m)</small></p>
     </div>
   </article>
 </div>
@@ -49,9 +49,9 @@ title: Contacter le centre
     </div>
     <div class="card__body">
       <h3 class="card__title">Temps d’accès</h3>
-      <p class="small"><strong>Lausanne</strong> : ~8 minutes</p>
-      <p class="small"><strong>Vevey</strong> : ~15 minutes</p>
-      <p class="small"><strong>Lutry</strong> : ~2 minutes</p>
+      <p><small><strong>Lausanne</strong> : ~8 minutes</small></p>
+      <p><small><strong>Vevey</strong> : ~15 minutes</small></p>
+      <p><small><strong>Lutry</strong> : ~2 minutes</small></p>
     </div>
   </article>
 </div>
@@ -69,7 +69,7 @@ title: Contacter le centre
         />
       </div>
       <figcaption class="card__body">
-        <p class="small">Places visiteurs à proximité immédiate du centre</p>
+        <p><small>Places visiteurs à proximité immédiate du centre</small></p>
       </figcaption>
     </figure>
   </div>
@@ -84,7 +84,7 @@ title: Contacter le centre
         />
       </div>
       <figcaption class="card__body">
-        <p class="small">Repères : centre, parkings et accès</p>
+        <p><small>Repères : centre, parkings et accès</small></p>
       </figcaption>
     </figure>
   </div>

@@ -4,41 +4,7 @@
 <body>
 <a href="#sections" class="skip">Skip to main content</a>
 {% include icons.html %}
-
-<dialog id="phone-contact" class="phone-contact" onclick="this.close()">
-  <form method="dialog" onclick="event.stopPropagation()">
-    <p>Prendre contact:</p>
-    <ul class="buttons_list">
-      <li>
-        <a class="button" id="phone-contact-sms" href="#" title="SMS">
-          <svg class="icon" width="18px" height="18px" aria-hidden="true">
-            <use xlink:href="#forum_24dp"></use>
-          </svg> SMS</a>
-      </li>
-      <li>
-        <a class="button" id="phone-contact-whatsapp" href="#" title="WhatsApp">
-          <svg class="icon" width="18px" height="18px" aria-hidden="true">
-            <use xlink:href="#whatsapp_24dp"></use>
-          </svg> WhatsApp</a>
-      </li>
-    </ul>
-    <div>
-      <button class="button hidden" id="cancel" type="reset" onclick="document.getElementById('phone-contact').close()">Annuler</button>
-    </div>
-  </form>
-</dialog>
-<dialog id="booking-modal" class="booking-modal" onclick="this.close()">
-  <form method="dialog" onclick="event.stopPropagation()">
-    <div class="booking-modal__content">
-      <button type="button" class="booking-modal__close" aria-label="Fermer" onclick="document.getElementById('booking-modal').close()">X</button>
-      <iframe src="" title="Prendre rendez-vous" loading="lazy"></iframe>
-    </div>
-  </form>
-</dialog>
-<dialog id="lightbox" class="lightbox" onclick="this.close()">
-  <img src="" alt="" aria-hidden="true" />
-</dialog>
-
+{% include dialogs.html %}
 <div class="container banner-intersecting inverted-top">
   <input id="toggler" type="checkbox" />
   {% include navigation.html %}

@@ -37,9 +37,9 @@ Ces outils ouvrent un **espace d’exploration créatif et symbolique** où chac
 
 Aucune expérience théâtrale n’est nécessaire.
 
-<p class="small">
+<p><small>
 En savoir plus : <a href="https://dramatherapie.ch/fr/">Institut suisse de dramathérapie</a>
-</p>
+</small></p>
 
 ---
 
@@ -114,9 +114,9 @@ Dans cette deuxième étape, les enfants sont invités à :
 21, 28 mai  
 4, 11, 18, 25 juin 2026
 
-<p class="small">
+<p><small>
 Cette étape peut être suivie même sans avoir participé à l’étape 1.
-</p>
+</small></p>
 
 ---
 
