@@ -47,11 +47,16 @@
   --borders-light: var(--dark-15);
   --borders-dark: var(--light-15);
   --font-color-inverted: var(--light-75);
-  --font-color-inverted-hover: var(--light);
+  --font-color-inverted-link: var(--light);
+  --font-color-inverted-hover: var(--light-85);
 
   --font-color: light-dark(var(--dark-75), var(--font-color-inverted));
-  --font-color-hover: light-dark(
+  --font-color-link: light-dark(
     var(--dark-85),
+    var(--font-color-inverted-link)
+  );
+  --font-color-hover: light-dark(
+    var(--dark-75),
     var(--font-color-inverted-hover)
   );
   --background: light-dark(var(--background-light), var(--background-dark));
@@ -466,18 +471,23 @@ html {
   }
 }
 html,
+body,
+dialog {
+  color: var(--font-color);
+  font-weight: 300;
+  line-height: 1.4;
+  letter-spacing: 0.025em;
+}
+
+html,
 body {
   margin: 0;
   padding: 0;
   min-width: #{map-get($breakpoints, min)}px;
   font-size: var(--font-size);
   word-wrap: break-word;
-  font-weight: 300;
-  line-height: 1.4;
-  letter-spacing: 0.025em;
   scroll-behavior: smooth;
   //background: var(--background);
-  color: var(--font-color);
 }
 
 /* Overlay when mobile nav is open */
@@ -560,7 +570,7 @@ body {
 
   a {
     text-decoration: none;
-    color: var(--font-color);
+    color: var(--font-color-link);
     &:hover {
       color: var(--font-color-hover);
     }
@@ -2561,7 +2571,8 @@ body {
   pointer-events: none;
 }
 
-#cookie-modal {
+#consent-info {
+  z-index: 20;
   position: fixed;
   bottom: var(--half-gutter);
   right: var(--half-gutter);
@@ -2658,91 +2669,4 @@ body {
   &:active img {
     transform: scale(1.02);
   }
-}
-
-// Cookie Consent Override
-#cc-main {
-  --cc-font-family: Raleway;
-  button {
-    color-scheme: inherit;
-  }
-  --cc-bg: light-dark(#ffffff, #161a1c);
-  --cc-primary-color: light-dark(#2c2f31, #ebf3f6);
-  --cc-secondary-color: light-dark(#5e6266, #aebbc5);
-
-  --cc-btn-primary-bg: light-dark(#30363c, #c2d0e0);
-  --cc-btn-primary-color: light-dark(#ffffff, var(--cc-bg));
-  --cc-btn-primary-border-color: var(--cc-btn-primary-bg); /* Common value */
-  --cc-btn-primary-hover-bg: light-dark(#000000, #98a7b6);
-  --cc-btn-primary-hover-color: light-dark(#ffffff, #000000);
-  --cc-btn-primary-hover-border-color: var(
-    --cc-btn-primary-hover-bg
-  ); /* Common value */
-
-  --cc-btn-secondary-bg: light-dark(#eaeff2, #242c31);
-  --cc-btn-secondary-color: var(--cc-primary-color); /* Common value */
-  --cc-btn-secondary-border-color: var(
-    --cc-btn-secondary-bg
-  ); /* Common value */
-  --cc-btn-secondary-hover-bg: light-dark(#d4dae0, #353d43);
-  --cc-btn-secondary-hover-color: light-dark(#000000, #ffffff);
-  --cc-btn-secondary-hover-border-color: var(
-    --cc-btn-secondary-hover-bg
-  ); /* Common value */
-
-  --cc-separator-border-color: light-dark(#f0f4f7, #222a30);
-
-  --cc-toggle-on-bg: var(--cc-btn-primary-bg); /* Common value */
-  --cc-toggle-off-bg: light-dark(#667481, #525f6b);
-  --cc-toggle-on-knob-bg: light-dark(#ffffff, var(--cc-btn-primary-color));
-  --cc-toggle-off-knob-bg: light-dark(
-    var(--cc-toggle-on-knob-bg),
-    var(--cc-btn-primary-color)
-  );
-
-  --cc-toggle-enabled-icon-color: light-dark(
-    var(--cc-bg),
-    var(--cc-btn-primary-color)
-  );
-  --cc-toggle-disabled-icon-color: light-dark(
-    var(--cc-bg),
-    var(--cc-btn-primary-color)
-  );
-
-  --cc-toggle-readonly-bg: light-dark(#d5dee2, #343e45);
-  --cc-toggle-readonly-knob-bg: light-dark(#fff, #5f6b72);
-  --cc-toggle-readonly-knob-icon-color: var(
-    --cc-toggle-readonly-bg
-  ); /* Common value */
-
-  /* Define these in an order that respects dependencies */
-  --cc-cookie-category-block-bg: light-dark(#f0f4f7, #1e2428);
-  --cc-section-category-border: light-dark(
-    var(--cc-cookie-category-block-bg),
-    #1e2428
-  );
-  --cc-cookie-category-block-border: light-dark(
-    #f0f4f7,
-    var(--cc-section-category-border)
-  );
-
-  --cc-cookie-category-block-hover-bg: light-dark(#e9eff4, #242c31);
-  --cc-cookie-category-block-hover-border: light-dark(#e9eff4, #232a2f);
-  --cc-cookie-category-expanded-block-bg: transparent; /* Common value */
-  --cc-cookie-category-expanded-block-hover-bg: light-dark(
-    #dee4e9,
-    var(--cc-toggle-readonly-bg)
-  );
-
-  --cc-overlay-bg: rgba(0, 0, 0, 0.65); /* Common value */
-  --cc-webkit-scrollbar-bg: var(
-    --cc-section-category-border
-  ); /* Common value, but depends on a changing variable */
-  --cc-webkit-scrollbar-hover-bg: var(
-    --cc-btn-primary-hover-bg
-  ); /* Common value */
-
-  --cc-footer-bg: light-dark(var(--cc-btn-secondary-bg), #0c0e0f);
-  --cc-footer-color: var(--cc-secondary-color); /* Common value */
-  --cc-footer-border-color: light-dark(#e4eaed, #060809);
 }

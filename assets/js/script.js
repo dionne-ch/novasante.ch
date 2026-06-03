@@ -42,6 +42,60 @@ const throttle = (func, wait, options) => {
   return throttled;
 };
 
+const setLocalStorageItem = (key, value) => {
+  try {
+    let stringValue;
+    if (typeof value === "object" && value !== null) {
+      // If the value is an object or array, convert it to a JSON string
+      stringValue = JSON.stringify(value);
+    } else {
+      // For primitives (string, number, boolean), convert directly to string
+      stringValue = String(value);
+    }
+    localStorage.setItem(key, stringValue);
+    // console.log(`Successfully set localStorage item: ${key}`);
+  } catch (error) {
+    console.error(`Error setting localStorage item "${key}":`, error);
+    // Handle potential errors like storage quota exceeded
+  }
+};
+
+const getLocalStorageItem = (key) => {
+  try {
+    const item = localStorage.getItem(key);
+    if (item === null) {
+      return null; // Item not found
+    }
+
+    // Attempt to parse as JSON. If it fails, return the raw string.
+    try {
+      // Check if the string looks like a JSON object or array
+      if (
+        (item.startsWith("{") && item.endsWith("}")) ||
+        (item.startsWith("[") && item.endsWith("]"))
+      ) {
+        return JSON.parse(item);
+      }
+    } catch (parseError) {
+      // If JSON.parse fails, it means it's likely a plain string or malformed JSON
+      // console.warn(`Could not parse localStorage item "${key}" as JSON. Returning as string.`, parseError);
+    }
+    return item; // Return as string if not parsed as JSON
+  } catch (error) {
+    console.error(`Error getting localStorage item "${key}":`, error);
+    return null; // Return null in case of any error during retrieval
+  }
+};
+
+const removeLocalStorageItem = (key) => {
+  try {
+    localStorage.removeItem(key);
+    // console.log(`Successfully removed localStorage item: ${key}`);
+  } catch (error) {
+    console.error(`Error removing localStorage item "${key}":`, error);
+  }
+};
+
 const convertDate = (event) => {
   // Prevent the form from submitting
   event.preventDefault();
@@ -81,13 +135,10 @@ const smoothScroll = (anchor, delay = 10) => {
   }
 
   // Scroll to the anchor
-  setTimeout(
-    () => {
-      location.hash = "";
-      location.hash = anchor;
-    },
-    delay
-  );
+  setTimeout(() => {
+    location.hash = "";
+    location.hash = anchor;
+  }, delay);
 };
 
 // JS TO USE THE MENU AS A SINGLE PAGE WITH SCROLL
@@ -282,10 +333,21 @@ const initColorSchemeToggler = () => {
     window.matchMedia &&
     window.matchMedia("(prefers-color-scheme: dark)").matches;
 
+  const html = document.querySelector("html");
+
+  let currentScheme =
+    getLocalStorageItem("colorScheme") ||
+    html.style.getPropertyValue("color-scheme");
+
+  // set html scheme based on local storage
+  html.style.setProperty("color-scheme", currentScheme);
+
   function toggleColorScheme() {
     const html = document.querySelector("html");
-    const currentScheme = html.style.getPropertyValue("color-scheme");
 
+    let currentScheme =
+      getLocalStorageItem("colorScheme") ||
+      html.style.getPropertyValue("color-scheme");
     let newScheme = currentScheme === "light" ? "dark" : "light";
 
     if (currentScheme === "" && prefersDark) {
@@ -293,6 +355,7 @@ const initColorSchemeToggler = () => {
     }
 
     html.style.setProperty("color-scheme", newScheme);
+    setLocalStorageItem("colorScheme", newScheme);
   }
 
   if (!prefersDark && colorSchemeToggler) {
@@ -821,13 +884,10 @@ const initPoliciesXHR = () => {
         }
 
         if (typeof init === "function") init();
-        if (typeof smoothScroll === "function") smoothScroll("2-notre-approche");
-
+        if (typeof smoothScroll === "function")
+          smoothScroll("2-notre-approche");
       } catch (error) {
-        console.error(
-          "Could not load privacy page via XHR:",
-          error
-        );
+        console.error("Could not load privacy page via XHR:", error);
 
         window.location.href = url;
       }
@@ -835,8 +895,124 @@ const initPoliciesXHR = () => {
   });
 };
 
+const initConsent = () => {
+  const snackbar = document.querySelector("#consent-info");
+  const preferencesModal = document.querySelector("#consent-preferences");
+  const toggleAnalytics = preferencesModal.querySelector(
+    'input[data-consent-action="analytics-consent"]'
+  );
+
+  const consent = getLocalStorageItem("consentPreferences");
+  let preferences = consent || {
+    necessary: true, // cannot be changed
+    analytics: true // opt-out strategy
+  };
+
+  if (consent) {
+    // Snackbar is removed only if consent preferences exist.
+    snackbar.remove();
+  }
+
+  if (preferences.analytics) {
+    enableMixpanel();
+  } else {
+    disableMixpanel();
+  }
+
+  const enableAnalytics = () => {
+    // console.log("enableAnalytics");
+    preferences.analytics = true;
+  };
+  const disableAnalytics = () => {
+    //console.log("disableAnalytics");
+    preferences.analytics = false;
+  };
+
+  const save = () => {
+    // console.log("save");
+    setLocalStorageItem("consentPreferences", preferences);
+
+    if (preferences.analytics) {
+      enableMixpanel();
+    } else {
+      disableMixpanel();
+    }
+
+    if (snackbar) {
+      // Check if snackbar still exists before trying to remove
+      snackbar.remove();
+    }
+    // preferencesModal.close(); // Close is done by dialod form
+  };
+
+  const accept = () => {
+    enableAnalytics();
+    save();
+  };
+  const reject = () => {
+    disableAnalytics();
+    save();
+  };
+
+  // Event listeners for the snackbar
+  if (snackbar) {
+    const acceptButton = snackbar.querySelector(
+      '[data-consent-action="accept"]'
+    );
+    if (acceptButton) {
+      acceptButton.addEventListener("click", accept);
+    }
+
+    document
+      .querySelectorAll('[data-consent-action="show-preferences"]')
+      .forEach((link) => {
+        link.addEventListener("click", () => {
+          if (toggleAnalytics) {
+            toggleAnalytics.checked = preferences.analytics;
+          }
+          preferencesModal.showModal();
+        });
+      });
+  }
+
+  // Event listeners for the preferences modal
+  if (preferencesModal) {
+    const saveButton = preferencesModal.querySelector(
+      '[data-consent-action="save"]'
+    );
+    if (saveButton) {
+      saveButton.addEventListener("click", save);
+    }
+
+    const rejectButton = preferencesModal.querySelector(
+      '[data-consent-action="reject"]'
+    );
+    if (rejectButton) {
+      rejectButton.addEventListener("click", reject);
+    }
+
+    const acceptButtonModal = preferencesModal.querySelector(
+      '[data-consent-action="accept"]'
+    );
+    if (acceptButtonModal) {
+      acceptButtonModal.addEventListener("click", accept);
+    }
+
+    if (toggleAnalytics) {
+      toggleAnalytics.addEventListener("change", (event) => {
+        if (!event.target.checked) {
+          disableAnalytics();
+        } else {
+          enableAnalytics();
+        }
+      });
+    }
+  }
+};
+
 const init = () => {
   // console.log('init');
+  initConsent();
   initPoliciesXHR();
   initSections();
   initLightbox();

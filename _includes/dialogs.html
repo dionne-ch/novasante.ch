@@ -38,18 +38,18 @@
       </svg></button>
   </form>
 </dialog>
-<dialog id="cookie-preferences" class="wide text-smaller" onclick="this.close()">
+<dialog id="consent-preferences" class="wide text-smaller" onclick="this.close()">
   <form method="dialog" onclick="event.stopPropagation()">
     <header>
       <h1>Préférences de confidentialité</h1>
     </header>
     <section class="content">
       <h2>Notre approche</h2>
-      <p>Nous limitons au strict nécessaire les technologies utilisées afin d'assurer le bon fonctionnement du site et de mieux comprendre son utilisation.</p>
+      <p>Nous limitons au strict nécessaire les technologies utilisées afin d’assurer le bon fonctionnement du site et de mieux comprendre son utilisation.</p>
       <section>
 
         <span class="switch float-right">
-          <input title="Les éléments nécessaires ne peuvent par être désactivés." checked disabled id="necessary-consent" type="checkbox" />
+          <input title="Les éléments nécessaires ne peuvent par être désactivés." checked disabled data-consent-action="necessary-consent" type="checkbox" />
           <label></label>
         </span>
         <h3>Stockage essentiel</h3>
@@ -58,7 +58,7 @@
       <section>
 
         <span class="switch float-right">
-          <input checked id="analytics-consent" type="checkbox" />
+          <input data-consent-action="analytics-consent" checked type="checkbox" />
           <label></label>
         </span>
         <h3>Mesure d'audience</h3>
@@ -80,10 +80,10 @@
       </section>
     </section>
     <footer>
-      <button data-cookie-action="save">Enregistrer</button>
+      <button data-consent-action="save">Enregistrer</button>
       <div class="button-group float-right">
-        <button data-cookie-action="reject">Refuser</button>
-        <button class="primary" autofocus data-cookie-action="accept">Tout accepter</button>
+        <button data-consent-action="reject">Refuser</button>
+        <button class="primary" autofocus data-consent-action="accept">Tout accepter</button>
       </div>
     </footer>
     <button class="close-button"><svg class="icon" width="18px" height="18px" aria-hidden="true">
