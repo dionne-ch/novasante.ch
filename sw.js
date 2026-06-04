@@ -1,10 +1,10 @@
-const cacheName = "NOVA-v0.2.14",
+const cacheName = "NOVA-v0.2.15",
       assets = [
-        '/',
-        '/index.html',
-        '/manifest.json',
-        '/assets/js/script.js',
-        '/assets/css/style.css',
+        //'/',
+        //'/index.html',
+        //'/manifest.json',
+        //'/assets/js/script.js',
+        //'/assets/css/style.css',
         // Local images
         '/assets/icons/favicon.svg',
         // CDN images
