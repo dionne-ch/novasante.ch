@@ -966,7 +966,8 @@ const initConsent = () => {
     document
       .querySelectorAll('[data-consent-action="show-preferences"]')
       .forEach((link) => {
-        link.addEventListener("click", () => {
+        link.addEventListener("click", (e) => {
+          e.preventDefault();
           if (toggleAnalytics) {
             toggleAnalytics.checked = preferences.analytics;
           }
