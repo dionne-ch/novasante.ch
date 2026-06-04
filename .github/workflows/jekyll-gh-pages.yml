@@ -33,6 +33,16 @@ jobs:
         run: |
           sass --no-source-map --load-path=_sass assets/css/style.src.scss assets/css/style.css
 
+      - name: Install Minification Tools
+        run: |
+          npm install -g terser
+          npm install -g csso-cli
+
+      - name: Minify JavaScript and CSS
+        run: |
+          terser assets/js/script.js --compress --mangle -o assets/js/script.js
+          csso assets/css/style.css -o assets/css/style.css
+
       - name: Setup Pages
         uses: actions/configure-pages@v5
 
