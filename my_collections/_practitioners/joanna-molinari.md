@@ -5,6 +5,7 @@ function:
 email: joanna.molinari@novasante.ch
 phone: +41 79 357 09 39
 image: https://ik.imagekit.io/sarahdionne/tr:w-576,fo-auto,f-webp/nova/practitioners/joanna-molinari.jpg
+image_path: /nova/practitioners/joanna-molinari.jpg
 urls:
   website: http://www.joanna-molinari.ch/
   booking: https://calendly.com/joannamolinari

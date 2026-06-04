@@ -6,6 +6,7 @@ function:
 email: sarah.dionne@novasante.ch
 phone: +41 76 839 30 08
 image: https://ik.imagekit.io/sarahdionne/tr:w-576,fo-auto,f-webp/nova/practitioners/sarah-dionne.jpg
+image_path: /nova/practitioners/sarah-dionne.jpg
 urls:
   website: https://sarah.dionne.ch
   booking: https://www.onedoc.ch/fr/acupunctrice/paudex/pcsix/sarah-dionne
