@@ -8,8 +8,8 @@ layout: default
 {% if page_content == "" %}
 
 <h2 id="presentation">{{ page.function | join: ", - " }}</h2>
-{% if page.image %}
-<p><img src="{{ site.image_domain }}tr:w-180,h-180,fo-auto,f-webp{{ page.image_path }}" alt="{{ page.title }}" class="float"></p>
+{% if page.image_path %}
+<p><img src="{{ site.image_domain }}tr:w-576,fo-auto,f-webp{{ page.image_path }}" alt="{{ page.title }}" class="float"></p>
 {% endif %}
 <p>
 <strong>{{ page.title }}</strong> reçoit au sein de NOVA Santé Intégrée à Paudex.

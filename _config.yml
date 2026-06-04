@@ -59,3 +59,4 @@ defaults:
     values:
       layout: practitioner
       image: "https://ik.imagekit.io/sarahdionne/tr:w-576,fo-auto,f-webp/nova/practitioners/empty_profile.png"
+      image_path: "/nova/practitioners/empty_profile.png"
