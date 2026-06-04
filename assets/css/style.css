@@ -1,5 +1,4 @@
 @charset "UTF-8";
-
 /* ================
    COLORS AND SIZES
    ================ */
@@ -1087,6 +1086,23 @@ body .button:hover svg.icon,
 body a.button:hover svg.icon {
   color: var(--font-color-hover);
 }
+body button.inline,
+body .button.inline,
+body a.button.inline {
+  display: inline-block;
+  text-transform: none;
+  padding: 0;
+  margin: 0;
+  font-weight: inherit;
+  cursor: pointer;
+  color: var(--font-color-link);
+}
+body button.inline:hover,
+body .button.inline:hover,
+body a.button.inline:hover {
+  outline: none;
+  color: var(--font-color-hover);
+}
 body button.primary,
 body .button.primary,
 body a.button.primary {
@@ -1239,7 +1255,7 @@ body .switch input[type=checkbox] + label:before {
   width: 3em;
   height: 1.75em;
   background: #fff;
-  border: 2px solid #fff;
+  border: 2px solid #ddd;
   box-shadow: inset -1.25em 0 0 #666;
   position: relative;
   display: inline-block;
@@ -2286,10 +2302,10 @@ body div.map-iframe.interact:before, body div.map-iframe.interact:after {
     outline: 1px solid var(--borders-dark);
     color: var(--font-color-inverted-hover);
   }
-  .container.banner-intersecting .content {
+  .container.banner-intersecting .wrapper .content {
     position: relative;
   }
-  .container.banner-intersecting .content:after {
+  .container.banner-intersecting .wrapper .content:after {
     position: absolute;
     pointer-events: none;
     content: "";

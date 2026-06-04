@@ -28,17 +28,8 @@
       {% include footer.html %}
     </div>
   </div>
-  <div class="snackbar text-smaller" id="consent-info">
-    <form method="dialog" onclick="event.stopPropagation()">
-      <section class="content">
-        <p>Le site <a href="/">novasante.ch</a> stocke uniquement les données nécessaires à son bon fonctionnement, ainsi qu'à la mesure de son audience. <button class="inline" data-consent-action="show-preferences">Voir les paramètres</button></p>
-      </section>
-      <footer>
-        <button data-consent-action="accept">OK</button>
-      </footer>
-    </form>
-  </div>
 </div>
+{% include snackbars.html %}
 {% include bottom_scripts.html %}
 </body>
 </html>
