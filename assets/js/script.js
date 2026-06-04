@@ -707,7 +707,7 @@ const initBookingWidgetTriggers = () => {
 
 const initBannerVideo = () => {
   const videoUrl =
-    "https://ik.imagekit.io/sarahdionne/nova/content/slider/PixVerse_V5_Transition_720P_cinematic_slow_mot.mp4";
+    "https://ik.imagekit.io/sarahdionne/nova/content/slider/Compressed_V5_Transition_720P_cinematic_slow_mot.mp4";
 
   const heroSection = document.querySelector(".slider");
   if (!heroSection) return;
