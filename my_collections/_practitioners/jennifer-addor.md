@@ -1,9 +1,9 @@
 ---
 title: Jennifer Addor
 function:
- - Nutrition Holistique
- - Hypnose et soin
- - Respiration Holotropique
+  - Nutrition Holistique
+  - Hypnose et soin
+  - Respiration Holotropique
 email: jennifer.addor@novasante.ch
 image: https://ik.imagekit.io/sarahdionne/tr:w-576,fo-auto,f-webp/nova/practitioners/jennifer-addor.jpg
 image_path: /nova/practitioners/jennifer-addor.jpg
