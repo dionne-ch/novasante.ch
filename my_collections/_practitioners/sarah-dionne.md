@@ -9,6 +9,7 @@ image: https://ik.imagekit.io/sarahdionne/tr:w-576,fo-auto,f-webp/nova/practitio
 image_path: /nova/practitioners/sarah-dionne.jpg
 urls:
   website: https://sarah.dionne.ch
+  reviews: https://g.page/r/CW0VLeLHH409EAI/review?utm_source=nova
   booking: https://www.onedoc.ch/fr/acupunctrice/paudex/pcsix/sarah-dionne
   linkedin: https://www.linkedin.com/in/sarah-dionne/
   vcf: https://sarah.dionne.ch/sarah_dionne.vcf
@@ -21,9 +22,9 @@ redirect_from: /sd
 
 Depuis plus de 15 ans, Sarah accompagne nourrissons, enfants, familles et adultes avec une approche de soin qui relie les connaissances cliniques de la médecine occidentale aux visions globales issues des médecines traditionnelles.
 
-Son parcours l’a progressivement amenée à développer une lecture plus large de la santé, où le corps, les émotions, le mode de vie et l’environnement de la personne sont considérés comme des éléments interdépendants.
+Son parcours l'a progressivement amenée à développer une lecture plus large de la santé, où le corps, les émotions, le mode de vie et l'environnement de la personne sont considérés comme des éléments interdépendants.
 
-Cette vision est aujourd’hui au cœur de son travail au sein de **NOVA Santé Intégrée**, un centre qu’elle a fondé afin de favoriser la collaboration entre différentes approches thérapeutiques et offrir un accompagnement global et cohérent aux personnes qui consultent.
+Cette vision est aujourd'hui au cœur de son travail au sein de **NOVA Santé Intégrée**, un centre qu'elle a fondé afin de favoriser la collaboration entre différentes approches thérapeutiques et offrir un accompagnement global et cohérent aux personnes qui consultent.
 
 ---
 
@@ -31,11 +32,11 @@ Cette vision est aujourd’hui au cœur de son travail au sein de **NOVA Santé 
 
 Pendant plus de 10 ans, elle a exercé au Centre Hospitalier Universitaire Vaudois (CHUV), principalement en **pédiatrie et en néonatologie**, où elle a accompagné des nourrissons, des enfants et leurs familles dans des situations médicales complexes.
 
-Au cours de ce parcours hospitalier, elle a notamment occupé le rôle de **physiothérapeute cadre** au sein du département femme-mère-enfant. Cette fonction l’a amenée à participer à la **gestion et au développement de projets cliniques**, ainsi qu’à la **formation et à l’accompagnement des équipes médicales et soignantes**. Cette expérience lui a permis de développer une vision clinique élargie et une solide pratique du **travail interdisciplinaire**.
+Au cours de ce parcours hospitalier, elle a notamment occupé le rôle de **physiothérapeute cadre** au sein du département femme-mère-enfant. Cette fonction l'a amenée à participer à la **gestion et au développement de projets cliniques**, ainsi qu'à la **formation et à l'accompagnement des équipes médicales et soignantes**. Cette expérience lui a permis de développer une vision clinique élargie et une solide pratique du **travail interdisciplinaire**.
 
 En 2021, elle a développé sa pratique en tant que thérapeute indépendante à **Lausanne** et à **Bulle** (Fribourg), où elle a progressivement intégré la **médecine traditionnelle chinoise** à la physiothérapie pédiatrique.
 
-Cette double expérience — hospitalière et clinique — l’a amenée à constater l’importance d’une approche plus coordonnée et globale des soins. C’est dans cette perspective qu’elle a créé **NOVA Santé Intégrée**, un espace dédié à la collaboration entre professionnels et à l’accompagnement global des patients.
+Cette double expérience — hospitalière et clinique — l'a amenée à constater l'importance d'une approche plus coordonnée et globale des soins. C'est dans cette perspective qu'elle a créé **NOVA Santé Intégrée**, un espace dédié à la collaboration entre professionnels et à l'accompagnement global des patients.
 
 ---
 
@@ -45,22 +46,22 @@ Cette double expérience — hospitalière et clinique — l’a amenée à cons
 
 Sa pratique repose sur une **vision intégrative de la santé**.
 
-Plutôt que de traiter uniquement les symptômes, l’accompagnement vise à comprendre les interactions entre le corps, les émotions, les habitudes de vie et le contexte global de la personne. Cette lecture systémique permet d’identifier les différents facteurs qui influencent l’équilibre de santé et d’accompagner les personnes vers des **changements rapides et  durables**.
+Plutôt que de traiter uniquement les symptômes, l'accompagnement vise à comprendre les interactions entre le corps, les émotions, les habitudes de vie et le contexte global de la personne. Cette lecture systémique permet d'identifier les différents facteurs qui influencent l'équilibre de santé et d'accompagner les personnes vers des **changements rapides et  durables**.
 
 Le travail consiste notamment à :
 
 - clarifier des situations complexes  
 - identifier les facteurs contribuant aux difficultés  
-- mettre en place des stratégies d’action adaptées  
-- soutenir les capacités d’adaptation et d’autorégulation du corps  
+- mettre en place des stratégies d'action adaptées  
+- soutenir les capacités d'adaptation et d'autorégulation du corps  
 
 ---
 
-## Domaines d’expertise
+## Domaines d'expertise
 
-Les domaines d’expertise incluent notamment :
+Les domaines d'expertise incluent notamment :
 
-- pédiatrie et développement de l’enfant  
+- pédiatrie et développement de l'enfant  
 - néonatologie  
 - périnatalité  
 - santé mentale et régulation émotionnelle  
@@ -81,19 +82,19 @@ Les problématiques fréquemment rencontrées incluent :
 - stress, anxiété et épuisement  
 - troubles digestifs et vesico-sphinctériens
 - fatigue chronique  
-- difficultés d’adaptation ou périodes de transition de vie  
+- difficultés d'adaptation ou périodes de transition de vie  
 
 ---
 
 ## Une pratique thérapeutique intégrée
 
-L’une des forces reconnues de Sarah est sa capacité à **comprendre rapidement des situations complexes** et à proposer **des pistes d’action concrètes**. L’objectif est d’initier le mouvement et de permettre à la personne de **retrouver une dynamique de santé plus équilibrée**.
+L'une des forces reconnues de Sarah est sa capacité à **comprendre rapidement des situations complexes** et à proposer **des pistes d'action concrètes**. L'objectif est d'initier le mouvement et de permettre à la personne de **retrouver une dynamique de santé plus équilibrée**.
 
-L’accompagnement s’appuie sur :
+L'accompagnement s'appuie sur :
 
 - une vision systémique  
 - une lecture clinique précise  
-- une capacité à structurer des plans d’action adaptés  
+- une capacité à structurer des plans d'action adaptés  
 - un soutien émotionnel dans les périodes de transition
 
 Les outils thérapeutiques sont combinés en fonction des besoins de la personne et de la situation. Le travail peut intégrer :
@@ -112,7 +113,7 @@ Ainsi, les interventions sont choisies et intégrées de manière fine, notammen
 
 ---
 
-## Modalités d’accompagnement
+## Modalités d'accompagnement
 
 Les consultations peuvent prendre différentes formes :
 
