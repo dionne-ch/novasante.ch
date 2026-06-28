@@ -9,7 +9,7 @@ image: https://ik.imagekit.io/sarahdionne/tr:w-576,fo-auto,f-webp/nova/practitio
 image_path: /nova/practitioners/jennifer-addor.jpg
 ---
 
-## {{ page.function }} {#presentation}
+## {{ page.function | join: " - " }} {#presentation}
 
 ![{{ page.title }}]({{ page.image }}){:.float}
 

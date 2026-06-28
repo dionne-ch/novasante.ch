@@ -16,7 +16,7 @@ urls:
 redirect_from: /sd
 ---
 
-## {{ page.function }} {#presentation}
+## {{ page.function | join: " - " }} {#presentation}
 
 ![{{ page.title }}]({{ page.image }}){:.float}
 

@@ -9,7 +9,7 @@ urls:
   widget: https://book.timify.com/services?accountId=69bd389056e7883180f6ce7a&hideCloseButton=true
 ---
 
-## {{ page.function }} {#presentation}
+## {{ page.function | join: " - " }} {#presentation}
 
 ![{{ page.title }}]({{ page.image }}){:.float}
 

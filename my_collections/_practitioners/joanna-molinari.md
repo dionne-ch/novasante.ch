@@ -12,7 +12,7 @@ urls:
   linkedin: https://www.linkedin.com/in/joanna-molinari-58357729a/
 ---
 
-## {{ page.function }} {#presentation}
+## {{ page.function | join: " - " }} {#presentation}
 
 ![{{ page.title }}]({{ page.image }}){:.float}
 
